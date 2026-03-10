@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Николай Ростов - Персонаж романа "Война и мир"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(to right, #1e3a5f, #2d5a87);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo {
+            color: #e0f2fe;
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: transparent;
+            border: 2px solid #7dd3fc;
+            color: #e0f2fe;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        nav button:hover {
+            background: #2d5a87;
+        }
+
+        nav button.active {
+            background: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+
+        /* Герой секция */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230ea5e9' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #2d5a87;
+            margin-bottom: 1rem;
+            font-weight: normal;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #2d5a87;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #1e3a5f;
+            color: #e0f2fe;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Секции */
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #1e3a5f;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Карточки биографии */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Ряд с любовью и двумя карточками справа */
+        .love-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .love-row .card-love {
+            grid-row: span 2;
+        }
+
+        .love-row .card-small {
+            height: fit-content;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(to right, #e0f2fe, #bae6fd);
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #0ea5e9;
+        }
+
+        .card-header h3 {
+            color: #1e3a5f;
+            font-size: 1.2rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body p {
+            margin-bottom: 1rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-body .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-body h4 {
+            color: #2d5a87;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Цитаты */
+        .quotes {
+            margin-top: 2rem;
+        }
+
+        .quotes h3 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .quote {
+            background: linear-gradient(to right, #f0f9ff, #e0f2fe);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #0ea5e9;
+            font-style: italic;
+            color: #1e3a5f;
+            font-size: 1.1rem;
+        }
+
+        /* Хронология */
+        .timeline {
+            margin-top: 3rem;
+        }
+
+        .timeline h3 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-top: 3px solid #0ea5e9;
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Видео секция */
+        #video {
+            background: linear-gradient(to bottom, #e0f2fe, #bae6fd);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            cursor: pointer;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, #2d5a87 0%, #3d6a97 100%);
+        }
+
+        .video-placeholder .play-btn {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover .play-btn {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .video-placeholder .play-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-info h4 {
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Тест */
+        .test-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .test-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .test-header {
+            background: linear-gradient(to right, #1e3a5f, #2d5a87);
+            color: #e0f2fe;
+            padding: 1.5rem;
+        }
+
+        .test-header h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .score-badge {
+            background: #0ea5e9;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #0c4a6e;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #38bdf8;
+            transition: width 0.3s ease;
+        }
+
+        .test-body {
+            padding: 2rem;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border: 2px solid #bae6fd;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover:not(.disabled) {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+
+        .option.correct {
+            border-color: #22c55e;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .option.wrong {
+            border-color: #ef4444;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .option.disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .next-btn {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .next-btn:hover {
+            background: #0284c7;
+        }
+
+        /* Результат */
+        .result {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-score {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+        }
+
+        .result-text {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-percent {
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .restart-btn {
+            padding: 1rem 2rem;
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background: #0284c7;
+        }
+
+        /* Семья */
+        .family-section {
+            margin-top: 2rem;
+        }
+
+        .family-section h3 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .family-member {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .family-member .role {
+            font-size: 0.8rem;
+            color: #0ea5e9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .family-member .name {
+            font-weight: bold;
+            color: #1e3a5f;
+        }
+
+        /* Футер */
+        footer {
+            background: #1e3a5f;
+            color: #e0f2fe;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .copyright {
+            color: #7dd3fc;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero-name {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav button {
+                min-width: 100px;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .love-row {
+                grid-template-columns: 1fr;
+            }
+
+            .love-row .card-love {
+                grid-row: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                Николай Ростов
+                <span>Персонаж романа «Война и мир»</span>
+            </div>
+            <nav>
+                <button onclick="scrollToSection('bio')" id="btn-bio">Биография</button>
+                <button onclick="scrollToSection('video')" id="btn-video">Видео</button>
+                <button onclick="scrollToSection('test')" id="btn-test">Тест</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">⚔️</div>
+            <h1 class="hero-name">Николай Ростов</h1>
+            <h2>Гусар, помещик, семьянин</h2>
+            <p>
+                Один из центральных персонажей романа-эпопеи 
+                Льва Николаевича Толстого «Война и мир». Гусар, участник Отечественной войны 1812 года, 
+                брат Наташи Ростовой, воплощение традиционных русских дворянских ценностей и патриотизма.
+            </p>
+            <div class="tags">
+                <span class="tag">⚔️ Гусар</span>
+                <span class="tag">👨‍👩‍👧 Семья Ростовых</span>
+                <span class="tag">🏰 Помещик</span>
+                <span class="tag">❤️ Муж Марьи</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Биография -->
+    <section id="bio">
+        <h2>Биография персонажа</h2>
+        
+        <div class="bio-grid">
+            <!-- Карточка 1: Происхождение -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Происхождение и семья</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Николай Ростов — сын графа Ильи Николаевича Ростова и графини Натальи, 
+                        старший брат Наташи Ростовой и Веры, младший брат Пети. Ростовы — старинный 
+                        дворянский род, известный своей добротой и гостеприимством, но к началу романа 
+                        их финансовое положение значительно ухудшилось. Граф Илья Ростов — добрый, 
+                        щедрый, но неумелый хозяин, который бездумно тратит деньги на развлечения, 
+                        приёмы и подарки, не думая о будущем.
+                    </p>
+                    <p>
+                        Николай с детства впитал семейные ценности: честность, искренность, преданность 
+                        семье и долгу. Атмосфера в доме Ростовых — тёплая, искренняя, полная любви и 
+                        радости — сформировала характер Николая как человека прямого, доброго и принципиального. 
+                        В отличие от семьи Курагиных, где царят холодный расчёт и лицемерие, Ростовы живут 
+                        сердцем, эмоциями, искренними чувствами. Эта открытость и эмоциональность становятся 
+                        определяющими чертами характера Николая.
+                    </p>
+                    <p>
+                        Особенно близкие отношения у Николая с младшей сестрой Наташей — они понимают друг 
+                        друга без слов, делятся сокровенными мыслями. Когда Николай проигрывает большие 
+                        деньги в карты, именно Наташа первой замечает его тяжёлое состояние и пытается 
+                        утешить. Семейные сцены Ростовых — именины, охота, новогодний бал — одни из самых 
+                        светлых и радостных эпизодов романа, показывающие, что настоящее счастье не в 
+                        богатстве, а в любви и единстве семьи.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Военная служба -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Военная служба</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Николай поступает на военную службу в гусарский полк в 1805 году. Военная карьера 
+                        для молодого дворянина того времени была естественным и почётным выбором. Юный 
+                        Николай мечтает о подвигах, славе, о том, как будет сражаться за царя и отечество. 
+                        Он полон романтических представлений о войне, которые вскоре столкнутся с суровой 
+                        реальностью. В армии Ростов проявляет себя как храбрый, хотя и порывистый офицер.
+                    </p>
+                    <p>
+                        Первое боевое крещение Николай получает в Шенграбенском сражении, где он совершает 
+                        свой первый «подвиг» — атакует французских кавалеристов, но получает ранение и падает 
+                        с лошади. В этот момент он думает, что погибает, и испытывает смесь ужаса и восторга. 
+                        Однако вскоре он понимает, что война — это не романтическое приключение, а тяжёлое 
+                        испытание. Аустерлицкое сражение, закончившееся поражением русской армии, становится 
+                        для Николая важным уроком: он видит хаос и неразбериху войны, понимает, что даже 
+                        личная храбрость не может изменить исход битвы.
+                    </p>
+                    <p>
+                        Отечественная война 1812 года становится для Николая временем взросления и 
+                        осознания истинного патриотизма. Он участвует в Бородинском сражении — одном из 
+                        самых кровопролитных в истории, видит тысячи убитых и раненых, осознаёт масштаб 
+                        народной трагедии. Он становится свидетелем пожара Москвы, преследует отступающих 
+                        французов. Война превращается для него из романтической мечты в суровую реальность, 
+                        где нужно просто выполнять свой долг, не думая о славе. Николай становится 
+                        настоящим офицером, надёжным и ответственным.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Карточка 3: Характер и взгляды -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Характер и взгляды</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Николай Ростов — человек прямых, честных убеждений, которые он готов отстаивать. 
+                        Он не склонен к рефлексии и философствованию, в отличие от своего друга Пьера 
+                        Безухова, который постоянно ищет смысл жизни. Николай — человек действия, долга, 
+                        традиционных ценностей. Он искренне любит царя и отечество, готов умереть за них 
+                        без лишних размышлений. Для него не существует сложных моральных дилемм — он 
+                        просто знает, что правильно, а что нет.
+                    </p>
+                    <p>
+                        Эта прямолинейность имеет свои плюсы и минусы. С одной стороны, Николай — честный, 
+                        надёжный человек, на которого можно положиться. Он не лицемерит, не притворяется, 
+                        говорит то, что думает. С другой стороны, он бывает резок и категоричен в суждениях, 
+                        не терпит инакомыслия. Например, он резко выступает против либеральных идей своего 
+                        друга Пьера, считая их вредными и опасными. Николай — консерватор, сторонник 
+                        традиционного уклада жизни.
+                    </p>
+                    <p>
+                        При этом Николай не лишён слабостей, которые Толстой показывает с психологической 
+                        глубиной. Он азартен, проигрывает огромные суммы в карты (43000 рублей Долохову), 
+                        что создаёт тяжёлые проблемы для семьи. Он горяч, совершает импульсивные поступки, 
+                        о которых потом жалеет. Однако его честность и готовность исправлять ошибки, 
+                        принимать ответственность за свои действия вызывают уважение. В этом Николай 
+                        отличается от таких персонажей, как Анатоль Курагин или Долохов, которые не 
+                        признают своих ошибок.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ряд: Любовь слева + две карточки справа -->
+        <div class="love-row" style="margin-top: 1rem;">
+            <!-- Карточка 4: Любовь (слева, высокая) -->
+            <div class="card card-love">
+                <div class="card-header">
+                    <h3>Любовь и семейная жизнь</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        В начале романа Николай влюблён в кузину Соню, бедную родственницу, живущую в доме 
+                        Ростовых. Их любовь — искренняя, юношеская, полная надежд. Соня — тихая, нежная 
+                        девушка, которая преданно любит Николая и ждёт его из армии. Они дают друг другу 
+                        клятвы верности, мечтают о будущем. Однако графиня Наталья Ростова настаивает, 
+                        чтобы сын женился на богатой невесте ради спасения семейного состояния, которое 
+                        подорвано долгами и расточительностью отца.
+                    </p>
+                    <p>
+                        Это создаёт глубокий внутренний конфликт для Николая. С одной стороны — его любовь 
+                        к Соне, данное ей слово, чувство долга и чести. С другой — долг перед семьёй, 
+                        необходимость спасать родовое имение, просьбы матери. Николай переживает тяжёлую 
+                        душевную драму. После разговора с матерью он пишет Соне письмо с отказом, хотя 
+                        это причиняет ему боль. Этот эпизод показывает сложность жизненных выборов, 
+                        столкновение личного счастья и семейного долга.
+                    </p>
+                    <p>
+                        После разрыва с Соней Николай женится на княжне Марье Болконской — дочери старого 
+                        князя Николая Болконского и сестре Андрея. Этот брак, сначала основанный частично 
+                        на расчёте (Марья приносит богатое приданое), перерастает в глубокое, искреннее 
+                        чувство. Марья — умная, духовно глубокая женщина, которая привносит в жизнь Николая 
+                        новое измерение. Её религиозность, склонность к рефлексии уравновешивают его 
+                        прямолинейность. Они становятся дополнением друг друга: Николай — практическая, 
+                        деятельная натура, Марья — духовная, созерцательная.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Правая колонка с двумя карточками -->
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Карточка 6: Смерть Пети -->
+                <div class="card card-small">
+                    <div class="card-header">
+                        <h3>Смерть Пети Ростова</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Одной из самых трагических страниц в жизни Николая становится гибель его младшего 
+                            брата Пети. Петя — шестнадцатилетний мальчик, романтик, мечтающий о подвигах. 
+                            Вопреки воле родителей он тайно отправляется на войну 1812 года, полный энтузиазма 
+                            и патриотизма. Николай узнаёт об этом слишком поздно и не может вернуть брата домой.
+                        </p>
+                        <p>
+                            Петя погибает в партизанском рейде отряда Денисова — его убивают французские 
+                            солдаты. Николай приезжает на место гибели брата и видит его тело. Это становится 
+                            для него страшным ударом. Смерть Пети — одного из самых светлых и чистых персонажей 
+                            романа — показывает жестокость войны, которая не щадит даже детей.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Карточка 7: Отношения с Пьером -->
+                <div class="card card-small">
+                    <div class="card-header">
+                        <h3>Дружба с Пьером Безуховым</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Николай Ростов и Пьер Безухов — давние друзья, хотя их характеры и взгляды на 
+                            жизнь совершенно противоположны. Пьер — человек рефлексии, философских исканий, 
+                            постоянных сомнений. Николай — человек действия, традиционных убеждений, безусловной 
+                            веры в правильность существующего порядка.
+                        </p>
+                        <p>
+                            В эпилоге романа мы видим их дружеские споры. Пьер делится с Николаем своими 
+                            либеральными идеями, а Николай резко возражает ему, считая такие мысли 
+                            опасными и вредными. Их дружба — пример того, как люди разных убеждений 
+                            могут сохранять уважение друг к другу.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 5: Хозяйство (полная ширина) -->
+        <div class="bio-grid" style="margin-top: 1rem;">
+            <div class="card full-width">
+                <div class="card-header">
+                    <h3>Хозяйственная деятельность и дальнейшая судьба</h3>
+                </div>
+                <div class="card-body">
+                    <div class="two-col">
+                        <div>
+                            <h4>Жизнь в деревне</h4>
+                            <p>
+                                После войны Николай выходит в отставку и вместе с женой и матерью 
+                                поселяется в деревне — в имении жены Лысых Горах. В отличие от своего отца, 
+                                который был неумелым и расточительным хозяином, Николай оказывается способным 
+                                и энергичным помещиком. Он разумно управляет имением, постепенно расплачивается 
+                                с огромными долгами семьи (более 100 000 рублей), создаёт крепкое, прибыльное 
+                                хозяйство. Этот переход от «барина» к рачительному хозяину показывает 
+                                способность Николая учиться и меняться.
+                            </p>
+                            <p>
+                                Толстой показывает Николая как образец «доброго барина», который заботится 
+                                о крестьянах, справедливо управляет имением. Он посещает поля, беседует 
+                                с мужиками, понимает их нужды. Однако при этом он твёрдо стоит за сохранение 
+                                существующего общественного порядка. Николай не принимает новых либеральных 
+                                идей о необходимости перемен в крестьянском вопросе, считая их вредными 
+                                мечтаниями интеллигенции. Здесь проявляется его консерватизм — он верит, 
+                                что существующий уклад проверен временем и не нуждается в изменениях.
+                            </p>
+                            <p>
+                                Отношения Николая с крестьянами строятся на традиционном патриархальном 
+                                укладе: барин заботится о мужиках, мужики благодарны барину. Толстой, сам 
+                                увлекавшийся идеями опрощения и сближения с народом, показывает эту модель 
+                                как идеальную для России того времени. Николай не пытается «просвещать» 
+                                крестьян или навязывать им чуждые идеи — он просто живёт с ними в гармонии, 
+                                уважая их традиции и образ жизни.
+                            </p>
+                        </div>
+                        <div>
+                            <h4>Семейное счастье</h4>
+                            <p>
+                                Николай и Марья счастливы в браке, хотя их характеры очень различаются. 
+                                У них рождаются дети: сын Николенька и две дочери — Анна и Марья. Марья 
+                                привносит в семью духовное начало, учит детей религии и морали, создаёт 
+                                атмосферу любви и взаимопонимания. Николай — практическая опора семьи, 
+                                он занимается хозяйством, обеспечивает материальное благополучие, 
+                                представляет семью в обществе. Вместе они создают гармоничный союз.
+                            </p>
+                            <p>
+                                В их доме в Лысых Горах живут также мать Николая — графиня Наталья, его 
+                                сестра Наташа (после смерти мужа Пьера Безухова она на время переезжает 
+                                к брату) и их дети. Это большой, дружный семейный клан, где царят любовь 
+                                и взаимопонимание. Толстой противопоставляет эту семью разобщённым и 
+                                несчастным семьям других персонажей — например, Курагиных, где каждый 
+                                живёт сам по себе.
+                            </p>
+                            <p>
+                                В эпилоге мы видим Николая как уверенного, уважаемого человека, который 
+                                нашёл своё место в жизни. Он не делает великих открытий, не переживает 
+                                духовных кризисов, как Пьер или Андрей, но живёт достойно и правильно — 
+                                именно так, как Толстой считал правильным для «обыкновенного» человека. 
+                                Николай — воплощение идеала «простой жизни», жизни в согласии с традициями, 
+                                семьёй, народом. Он не герой в романтическом смысле, но герой в смысле 
+                                нравственном — человек, который выполняет свой долг и живёт по совести.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Хронология -->
+        <div class="timeline">
+            <h3>Основные события жизни</h3>
+            <div class="timeline-grid">
+                <div class="timeline-item">
+                    <div class="timeline-year">1805</div>
+                    <div class="timeline-event">Поступление на службу, первые сражения: Шенграбен, Аустерлиц</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1806</div>
+                    <div class="timeline-event">Возвращение домой, проигрыш в карты Долохову, любовь к Соне</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1810</div>
+                    <div class="timeline-event">Объяснение с Соней, разрыв по настоянию матери</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1812</div>
+                    <div class="timeline-event">Отечественная война, Бородино, смерть Пети</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1813</div>
+                    <div class="timeline-event">Заграничный поход русской армии</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1814</div>
+                    <div class="timeline-event">Выход в отставку, женитьба на Марье Болконской</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Семья -->
+        <div class="family-section">
+            <h3>Семья Николая Ростова</h3>
+            <div class="family-grid">
+                <div class="family-member">
+                    <div class="role">Отец</div>
+                    <div class="name">Илья Ростов</div>
+                </div>
+                <div class="family-member">
+                    <div class="role">Мать</div>
+                    <div class="name">Наталья Ростова</div>
+                </div>
+                <div class="family-member">
+                    <div class="role">Сестра</div>
+                    <div class="name">Наташа Ростова</div>
+                </div>
+                <div class="family-member">
+                    <div class="role">Брат</div>
+                    <div class="name">Петя Ростов</div>
+                </div>
+                <div class="family-member">
+                    <div class="role">Жена</div>
+                    <div class="name">Марья Болконская</div>
+                </div>
+                <div class="family-member">
+                    <div class="role">Друг</div>
+                    <div class="name">Пьер Безухов</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Цитаты -->
+        <div class="quotes">
+            <h3>Цитаты и мысли Николая Ростова</h3>
+            <div class="quotes-grid">
+                <div class="quote">«Я истинно люблю Александра I, я торжествую, я счастлив, что вижу его!» — мысли при виде императора</div>
+                <div class="quote">«Ежели вы хотите быть моим другом, не говорите со мною о ней» — о Соне после разрыва</div>
+                <div class="quote">«Дымятся, горят деревни, и некому их тушить, потому что мужики ушли» — о войне 1812 года</div>
+                <div class="quote">«Я доложу и постараюсь сделать, что можно» — об исполнении воинского долга</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Видео -->
+    <section id="video">
+        <h2>Видео о персонаже</h2>
+        
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-wrapper" onclick="loadVideo(this, '09983a44bc2232848ae345f0a62e04ec')">
+                    <div class="video-placeholder">
+                        <div class="play-btn">▶</div>
+                        <div class="play-text">Нажмите для воспроизведения</div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>Николай Ростов — анализ персонажа</h4>
+                    <p>Разбор характера и судьбы Николая Ростова в романе Л.Н. Толстого.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper" onclick="loadVideo(this, 'd2163a16fde3cc17ab1879df9387fad1')">
+                    <div class="video-placeholder">
+                        <div class="play-btn">▶</div>
+                        <div class="play-text">Нажмите для воспроизведения</div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>Персонажи романа «Война и мир»</h4>
+                    <p>Краткий обзор главных героев романа и их характеров.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper" onclick="loadVideo(this, 'a378c84961bf1d105340ab5d45ce5949')">
+                    <div class="video-placeholder">
+                        <div class="play-btn">▶</div>
+                        <div class="play-text">Нажмите для воспроизведения</div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>Образы Болконских</h4>
+                    <p>Анализ образов князей Болконских и их связь с Ростовыми.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-wrapper" onclick="loadVideo(this, '374c34e6ff59833bbf8e3338ee4ea084')">
+                    <div class="video-placeholder">
+                        <div class="play-btn">▶</div>
+                        <div class="play-text">Нажмите для воспроизведения</div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>Психологизм Толстого</h4>
+                    <p>«Диалектика души» — как Толстой раскрывает внутренний мир героев.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тест -->
+    <section id="test">
+        <h2>Тест: Что вы знаете о Николае Ростове?</h2>
+        
+        <div class="test-container">
+            <div class="test-card" id="test-card">
+                <!-- Контент теста генерируется JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>Образовательный проект о литературе</p>
+        <p class="copyright">Л.Н. Толстой «Война и мир» (1863-1869)</p>
+    </footer>
+
+    <script>
+        // Данные теста
+        const questions = [
+            {
+                question: "Кем был Николай Ростов по происхождению?",
+                options: ["Крестьянином", "Дворянином", "Купцом", "Священником"],
+                correct: 1
+            },
+            {
+                question: "В каком полку служил Николай Ростов?",
+                options: ["В пехотном", "В гусарском", "В артиллерийском", "В кавалергардском"],
+                correct: 1
+            },
+            {
+                question: "Кем приходилась Наташа Ростову Николаю?",
+                options: ["Кузиной", "Сестрой", "Женой", "Племянницей"],
+                correct: 1
+            },
+            {
+                question: "В кого Николай был влюблён в начале романа?",
+                options: ["В Наташу", "В Соню", "В Марью", "В Веру"],
+                correct: 1
+            },
+            {
+                question: "На ком Николай Ростов женился в конце романа?",
+                options: ["На Соне", "На Наташе", "На Марье Болконской", "На Елене Курагиной"],
+                correct: 2
+            },
+            {
+                question: "Какое сражение Николай Ростов принял участие в 1805 году?",
+                options: ["Бородинское", "Шенграбенское и Аустерлицкое", "Куликовскую битву", "Битву под Лейпцигом"],
+                correct: 1
+            },
+            {
+                question: "Какая черта характера была главной у Николая Ростова?",
+                options: ["Хитрость", "Честность и прямолинейность", "Лень", "Трусость"],
+                correct: 1
+            },
+            {
+                question: "Как звали младшего брата Николая Ростова, погибшего на войне?",
+                options: ["Пётр (Петя)", "Андрей", "Павел", "Сергей"],
+                correct: 0
+            },
+            {
+                question: "Чем Николай Ростов отличался от своего отца в ведении хозяйства?",
+                options: ["Был таким же расточительным", "Стал хорошим и энергичным хозяином", "Продал имение", "Отдал всё управляющему"],
+                correct: 1
+            },
+            {
+                question: "Кто стал близким другом Николая Ростова?",
+                options: ["Анатоль Курагин", "Пьер Безухов", "Фёдор Долохов", "Борис Друбецкой"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        // Загрузка видео при клике
+        function loadVideo(wrapper, videoId) {
+            const placeholder = wrapper.querySelector('.video-placeholder');
+            if (placeholder) {
+                placeholder.remove();
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://rutube.ru/play/embed/${videoId}`;
+                iframe.title = 'Видео';
+                iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.allowFullscreen = true;
+                wrapper.appendChild(iframe);
+            }
+        }
+
+        // Навигация
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            // Обновляем активную кнопку
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + sectionId).classList.add('active');
+        }
+
+        // Рендер теста
+        function renderTest() {
+            const testCard = document.getElementById('test-card');
+            
+            const progress = ((currentQuestion) / questions.length) * 100;
+            
+            testCard.innerHTML = `
+                <div class="test-header">
+                    <h3>
+                        <span>Вопрос ${currentQuestion + 1} из ${questions.length}</span>
+                        <span class="score-badge">Баллы: ${score}</span>
+                    </h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                </div>
+                <div class="test-body">
+                    <p class="question">${questions[currentQuestion].question}</p>
+                    <div class="options" id="options">
+                        ${questions[currentQuestion].options.map((option, index) => `
+                            <button class="option" onclick="selectAnswer(${index})">
+                                <strong>${String.fromCharCode(65 + index)}.</strong> ${option}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <button class="next-btn" id="next-btn" style="display: none;" onclick="nextQuestion()">
+                        ${currentQuestion < questions.length - 1 ? 'Следующий вопрос' : 'Показать результат'}
+                    </button>
+                </div>
+            `;
+            
+            answered = false;
+        }
+
+        // Выбор ответа
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+            
+            const options = document.querySelectorAll('.option');
+            const correct = questions[currentQuestion].correct;
+            
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === correct) {
+                    opt.classList.add('correct');
+                } else if (i === index && i !== correct) {
+                    opt.classList.add('wrong');
+                }
+            });
+            
+            if (index === correct) {
+                score++;
+            }
+            
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        // Следующий вопрос
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion >= questions.length) {
+                showResult();
+            } else {
+                renderTest();
+            }
+        }
+
+        // Показать результат
+        function showResult() {
+            const testCard = document.getElementById('test-card');
+            const percent = Math.round((score / questions.length) * 100);
+            
+            let message = '';
+            if (score === questions.length) {
+                message = 'Превосходно! Вы отлично знаете Николая Ростова!';
+            } else if (score >= 7) {
+                message = 'Хорошо! У вас хорошие знания о персонаже!';
+            } else if (score >= 5) {
+                message = 'Неплохо! Но есть куда расти.';
+            } else {
+                message = 'Рекомендуем перечитать биографию и пройти тест снова.';
+            }
+            
+            testCard.innerHTML = `
+                <div class="test-header">
+                    <h3 style="justify-content: center;">Результат теста</h3>
+                </div>
+                <div class="result">
+                    <div class="result-score">${score} / ${questions.length}</div>
+                    <div class="progress-bar" style="margin-bottom: 1.5rem;">
+                        <div class="progress-fill" style="width: ${percent}%"></div>
+                    </div>
+                    <p class="result-text">${message}</p>
+                    <p class="result-percent">Правильных ответов: ${score} из ${questions.length} (${percent}%)</p>
+                    <button class="restart-btn" onclick="restartTest()">Пройти тест заново</button>
+                </div>
+            `;
+        }
+
+        // Перезапуск теста
+        function restartTest() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            renderTest();
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTest();
+            
+            // Отслеживание прокрутки для активной кнопки
+            const sections = ['bio', 'video', 'test'];
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(sectionId => {
+                    const section = document.getElementById(sectionId);
+                    const rect = section.getBoundingClientRect();
+                    
+                    if (rect.top <= 150) {
+                        current = sectionId;
+                    }
+                });
+                
+                document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+                document.getElementById('btn-' + current).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
